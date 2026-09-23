@@ -62,4 +62,27 @@ describe('CSRF Protection Verification', () => {
     expect(res.status).toBe(201);
     expect(res.body.user.email).toBe('valid@example.com');
   });
+
+  it('should succeed when a valid signed CSRF token is submitted even without prior session cookies (cross-origin resilient)', async () => {
+    // 1. Fetch valid token without maintaining session agent
+    const tokenRes = await request(app).get('/api/csrf-token');
+    expect(tokenRes.status).toBe(200);
+    const validToken = tokenRes.body.csrfToken;
+
+    // 2. Submit with a FRESH client that has NO session cookie
+    const freshClient = request(app);
+    const res = await freshClient
+      .post('/auth/register')
+      .set('X-CSRF-Token', validToken)
+      .send({
+        name: 'Cross Origin User',
+        email: 'crossorigin@example.com',
+        password: 'Password123!',
+        confirmPassword: 'Password123!',
+      });
+
+    expect(res.status).toBe(201);
+    expect(res.body.user.email).toBe('crossorigin@example.com');
+  });
 });
+

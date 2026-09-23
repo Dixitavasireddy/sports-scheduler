@@ -17,6 +17,9 @@ const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 
+// Trust reverse proxy (Render, AWS, Heroku) so req.secure and secure cookies work over HTTPS
+app.set('trust proxy', 1);
+
 // Security headers
 app.use(
   helmet({
@@ -25,20 +28,37 @@ app.use(
   })
 );
 
-// CORS configuration supporting session credentials
+// CORS configuration supporting session credentials across local dev and deployed Render environments
 const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
+const allowedOrigins = [
+  clientUrl,
+  'https://sports-scheduler-1-1pww.onrender.com',
+  'http://localhost:5173',
+  'http://localhost:3000',
+  'http://127.0.0.1:5173',
+  'http://127.0.0.1:3000',
+];
+
 app.use(
   cors({
     origin: (origin, callback) => {
       // Allow requests with no origin (like mobile apps, curl, supertest)
-      if (!origin || origin === clientUrl || origin === 'http://localhost:5173' || origin === 'http://127.0.0.1:5173') {
+      if (!origin) {
         return callback(null, true);
       }
-      return callback(null, true); // Permissive in dev, or specific origin
+      if (
+        allowedOrigins.includes(origin) ||
+        origin.endsWith('.onrender.com') ||
+        process.env.NODE_ENV !== 'production'
+      ) {
+        return callback(null, true);
+      }
+      return callback(null, true);
     },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-CSRF-Token', 'csrf-token', 'Cookie'],
+    exposedHeaders: ['Set-Cookie', 'X-CSRF-Token'],
   })
 );
 

@@ -10,6 +10,7 @@ const { isMockPg } = require('./database');
 function createSessionMiddleware() {
   const isProd = process.env.NODE_ENV === 'production';
   const sessionSecret = process.env.SESSION_SECRET || 'supersecret_sports_scheduler_session_key_wd501_2026';
+  const isSecure = isProd || process.env.COOKIE_SECURE === 'true';
 
   let store;
 
@@ -18,15 +19,21 @@ function createSessionMiddleware() {
   if (!isEmbedded && (process.env.DATABASE_URL || (process.env.DB_HOST && process.env.USE_EMBEDDED_POSTGRES === 'false'))) {
     try {
       const PgSession = pgSimple(session);
+      const conConfig = process.env.DATABASE_URL
+        ? {
+            connectionString: process.env.DATABASE_URL,
+            ssl: isProd ? { rejectUnauthorized: false } : false,
+          }
+        : {
+            user: process.env.DB_USER || 'postgres',
+            password: process.env.DB_PASSWORD || 'postgres',
+            host: process.env.DB_HOST || '127.0.0.1',
+            port: parseInt(process.env.DB_PORT || '5432', 10),
+            database: process.env.DB_NAME || 'sports_scheduler',
+          };
+
       store = new PgSession({
-        conObject: {
-          connectionString: process.env.DATABASE_URL,
-          user: process.env.DB_USER || 'postgres',
-          password: process.env.DB_PASSWORD || 'postgres',
-          host: process.env.DB_HOST || '127.0.0.1',
-          port: parseInt(process.env.DB_PORT || '5432', 10),
-          database: process.env.DB_NAME || 'sports_scheduler',
-        },
+        conObject: conConfig,
         createTableIfMissing: true,
       });
       console.log('[Session] Using PostgreSQL-backed session store (connect-pg-simple)');
@@ -41,10 +48,11 @@ function createSessionMiddleware() {
     secret: sessionSecret,
     resave: false,
     saveUninitialized: false,
+    proxy: true,
     cookie: {
       httpOnly: true,
-      secure: isProd && process.env.COOKIE_SECURE === 'true',
-      sameSite: isProd ? 'none' : 'lax',
+      secure: isSecure,
+      sameSite: isSecure ? 'none' : 'lax',
       maxAge: 24 * 60 * 60 * 1000, // 24 hours
     },
   });
