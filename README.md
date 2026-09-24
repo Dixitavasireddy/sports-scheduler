@@ -5,6 +5,42 @@ A complete, production-grade web application for organizing, discovering, and ma
 Built with **Node.js**, **Express**, **PostgreSQL**, **Sequelize ORM**, **Passport.js**, **Express-session**, **CSRF Protection**, and a responsive **React (Vite)** dashboard interface.
 
 ---
+## 🌐 Live Application
+
+🚀 **Live Demo:**  
+[Sports Scheduler – Live Application](YOUR_LIVE_FRONTEND_URL)
+
+The live application demonstrates the complete Sports Scheduler workflow, including player registration, authentication, session creation, session discovery, joining sessions, participant management, cancellation, and administrative features.
+
+---
+
+## 🎥 Video Demonstration
+
+▶️ **Project Demo Video:**  
+[Watch the Sports Scheduler Demo on YouTube](YOUR_YOUTUBE_VIDEO_LINK)
+
+The demonstration video covers:
+
+- Project introduction
+- Technology stack
+- Player registration
+- Player login and logout
+- Admin login
+- Sports management
+- Admin Player Mode
+- Creating sports sessions
+- Discovering available sessions
+- Joining sessions
+- Viewing participants
+- Managing created sessions
+- Cancelling sessions
+- Session statuses
+- Reports and sport popularity
+- PostgreSQL and Sequelize
+- Authentication and security
+- Automated testing
+- Git/GitHub workflow
+- Render deployment
 
 ## 🌟 Key Architecture & Features
 
@@ -146,7 +182,7 @@ sports-scheduler/
 ## 🚀 Getting Started
 
 ### 1. Prerequisites
-- **Node.js**: v18+ or v20+ recommended (verified on Node v24).
+- **Node.js**: v20+  (verified on Node v24).
 - **npm**: v9+ or v10+.
 - **PostgreSQL**: (Optional host service or Docker). The application automatically includes a built-in PostgreSQL adapter so it runs out-of-the-box in zero-configuration local environments without requiring manual database setup.
 
@@ -214,15 +250,6 @@ From the project root:
 ```bash
 npm run dev
 ```
-
-This concurrently starts:
-- **Backend API Server**: `http://localhost:5000`
-- **Frontend SPA (Vite)**: `http://localhost:5173`
-
-Navigate to `http://localhost:5173` in your browser.
-
----
-
 ## 🧪 Automated Testing
 
 The project contains 6 comprehensive automated test suites built with **Jest** and **Supertest** covering 100% of the course backend requirements:
@@ -298,3 +325,5 @@ This application fulfills all capstone project requirements without omission:
 - Dynamic SQL admin reports with date filtering and cancelled session exclusion.
 - Automated tests passing with 100% success rate across 33 test cases.
 - Polished, responsive, accessible sports management UI.
+
+
