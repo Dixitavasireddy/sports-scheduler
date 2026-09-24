@@ -313,32 +313,30 @@ npm test
 
 ---
 ## SCREENSHOTS ##
+
+### 1. 🏠 Landing Page
 <img width="944" height="437" alt="Landing page" src="https://github.com/user-attachments/assets/932ad314-aa10-41a9-9d0f-774b0ccf1b6b" />
 
+### 2. 📝 Player Registration
 <img width="946" height="443" alt="Register" src="https://github.com/user-attachments/assets/3dd902f2-cf70-4fb4-8e16-2878a4227c6a" />
 
+### 3. 🔐 Player Sign In
 <img width="716" height="434" alt="Signin" src="https://github.com/user-attachments/assets/9f00ce24-4739-4d9d-b5c2-776cf3708b6f" />
 
-
+### 4. 👤 Player Dashboard
 <img width="949" height="441" alt="Player-Dashboard" src="https://github.com/user-attachments/assets/b063d955-0fe7-4629-bff1-6f1ecea4b8b6" />
 
+### 5. 🏟️ Host Match
 <img width="299" height="426" alt="Host_Match" src="https://github.com/user-attachments/assets/04f5caad-5522-4881-ab61-30fdb06cf1a8" />
 
+### 6. 👑 Admin Dashboard
 <img width="885" height="430" alt="Admin_Dashboard" src="https://github.com/user-attachments/assets/0c009b3f-8377-4b76-8aab-4d71a4cf130a" />
 
+### 7. 📋 Admin — All Matches
 <img width="435" height="443" alt="Admin_Matches" src="https://github.com/user-attachments/assets/f79237f2-7ce7-425f-99d9-97a265c10b1d" />
 
+### 8. 📊 Sessions and Sports Performance Report
 <img width="733" height="440" alt="Admin _Report" src="https://github.com/user-attachments/assets/7b1fd44d-5891-430d-a217-96fee6ab435a" />
-
-<img width="944" height="437" alt="All_Matches" src="https://github.com/user-attachments/assets/8a0d3087-90c9-418e-a315-d4ebdb13f89a" />
-
-
-
-
-
-
-
-
 
 
 ## 🎓 WD501 Course Evaluation Summary
