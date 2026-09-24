@@ -17,7 +17,7 @@ The live application demonstrates the complete Sports Scheduler workflow, includ
 ## 🎥 Video Demonstration
 
 ▶️ **Project Demo Video:**  
-[Watch the Sports Scheduler Demo on YouTube](YOUR_YOUTUBE_VIDEO_LINK)
+[Watch the Sports Scheduler Demo on YouTube](https://youtu.be/8z-2TG3Y81k)
 
 The demonstration video covers:
 
