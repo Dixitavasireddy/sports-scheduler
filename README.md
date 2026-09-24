@@ -8,7 +8,7 @@ Built with **Node.js**, **Express**, **PostgreSQL**, **Sequelize ORM**, **Passpo
 ## 🌐 Live Application
 
 🚀 **Live Demo:**  
-[Sports Scheduler – Live Application](YOUR_LIVE_FRONTEND_URL)
+[Sports Scheduler – Live Application](https://sports-scheduler-1-1pvw.onrender.com/)
 
 The live application demonstrates the complete Sports Scheduler workflow, including player registration, authentication, session creation, session discovery, joining sessions, participant management, cancellation, and administrative features.
 
@@ -211,19 +211,18 @@ cp .env.example backend/.env
 
 Default configuration in `backend/.env`:
 ```env
-PORT=5000
+PORT=3000
 NODE_ENV=development
-SESSION_SECRET=supersecret_sports_scheduler_session_key_wd501_2026
-CLIENT_URL=http://localhost:5173
+SESSION_SECRET=your_session_secret
 
 # PostgreSQL settings (if connecting to external database):
 DB_USER=postgres
-DB_PASSWORD=postgres
+DB_PASSWORD=your_postgres_password
 DB_NAME=sports_scheduler
-DB_HOST=127.0.0.1
-DB_PORT=5432
+DB_HOST=1:1:1:1
+DB_PORT=3000
 # Or full URI:
-# DATABASE_URL=postgresql://postgres:postgres@127.0.0.1:5432/sports_scheduler
+# DATABASE_URL=your_database_URL
 
 USE_EMBEDDED_POSTGRES=true
 ```
